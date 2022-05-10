@@ -1,11 +1,11 @@
 export const environment = {
   firebase: {
-    projectId: 'siscadfuncionarioisis',
-    appId: '1:758959640295:web:334a6113b227af0fe89c42',
-    storageBucket: 'siscadfuncionarioisis.appspot.com',
-    apiKey: 'AIzaSyAjCawN5o3c0P-t0HfzVYbqWboCejRaniE',
-    authDomain: 'siscadfuncionarioisis.firebaseapp.com',
-    messagingSenderId: '758959640295',
+    apiKey: "AIzaSyBS_O09luQf_slh_W3CF3T6w_Xq_vQPNQY",
+    authDomain: "cadastrafuncionario.firebaseapp.com",
+    projectId: "cadastrafuncionario",
+    storageBucket: "cadastrafuncionario.appspot.com",
+    messagingSenderId: "879254328489",
+    appId: "1:879254328489:web:e73761cfaecf6db66e85b8"
   },
   production: true
 };

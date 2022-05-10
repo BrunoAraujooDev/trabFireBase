@@ -1,1 +1,43 @@
-<p>funcionario-form works!</p>
+<div class="card px-3 my-3 div-form-principal">
+
+    <div class="card p-3 my-3">
+        <div class="card-body">
+            <h3>Dados do Funcionário</h3>
+        </div>
+        <form action="" [formGroup]="funcionario" (ngSubmit)="addFuncionario()">
+            <mat-form-field appearance="outline">
+                <mat-label>Nome do Funcionário</mat-label>
+                <input type="text" matInput formControlName="nome"
+                    [class.valido-icon]="this.funcionario.get('nome')?.valid"
+                    [class.invalido-icon]="(this.funcionario.get('nome')?.invalid && this.funcionario.get('nome')?.touched)">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>E-mail do Funcionário</mat-label>
+                <input type="email" matInput formControlName="email"
+                    [class.valido-icon]="this.funcionario.get('email')?.valid"
+                    [class.invalido-icon]="this.funcionario.get('email')?.invalid && this.funcionario.get('email')?.touched">
+
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Salário do Funcionário</mat-label>
+                <input type="text" matInput formControlName="salario">
+
+            </mat-form-field>
+            <div>
+                <mat-label>Cargo do Funcionário</mat-label>
+                <select name="cargo" formControlName="cargo" class="form-control mb-3"
+                    [class.valido-icon]="this.funcionario.get('cargo')?.valid"
+                    [class.invalido-icon]="this.funcionario.get('cargo')?.invalid && this.funcionario.get('cargo')?.touched">>
+                    <option value="ADM">Administração</option>
+                    <option value="RH">Recursos Humanos</option>
+                    <option value="TI">Tecnologia da Informação</option>
+                </select>
+            </div>
+
+            <button mat-raised-button color="primary" type="button" class="btn ">Adicionar Foto</button>
+            <input type="file" id="file-input" #fileInput formControlName="foto" accept="image/*">
+            <button class="btn mx-2 " mat-raised-button color="accent" type="submit" [disabled]="funcionario.invalid"
+                style="margin-top: 10px;">Salvar</button>
+        </form>
+
+    </div>
