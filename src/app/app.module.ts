@@ -14,9 +14,17 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AppRoutingsModule } from './app-routing.module';
 import { FuncionarioCardComponent } from './components/funcionario/funcionario-card/funcionario-card.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { ReactiveFormsModule } from '@angular/forms';
+import { LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localePt from "@angular/common/locales/pt";
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { LoginComponent } from './components/login/login.component';
+
+registerLocaleData(localePt)
 
 @NgModule({
   declarations: [
@@ -27,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FuncionarioListaComponent,
     MainNavComponent,
     FuncionarioCardComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +49,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     AngularFirestoreModule
 
   ],
-  providers: [],
+  providers: [
+    {
+    provide: LOCALE_ID,
+    useValue: "pt-br"
+  },
+  AngularFireAuth
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

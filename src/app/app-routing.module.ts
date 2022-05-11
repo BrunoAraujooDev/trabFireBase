@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/templates/home/home.component';
 import { NgModule } from '@angular/core';
 import { FuncionarioCardComponent } from './components/funcionario/funcionario-card/funcionario-card.component';
+import { AutorizadoGuard } from './components/guards/autorizado.guard';
 
 const routes: Routes = [
 {path:"", component: HomeComponent},
-{path:"func-adm", component:FuncionarioAdmComponent},
+{path:"func-adm", component:FuncionarioAdmComponent, canActivate: [AutorizadoGuard]},
 {path:"cards-func", component:FuncionarioCardComponent}
 ];
 

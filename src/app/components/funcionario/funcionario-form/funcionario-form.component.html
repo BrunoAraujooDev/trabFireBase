@@ -4,7 +4,7 @@
         <div class="card-body">
             <h3>Dados do Funcionário</h3>
         </div>
-        <form action="" [formGroup]="funcionario" (ngSubmit)="addFuncionario()">
+        <form action="" [formGroup]="funcionario" (ngSubmit)="salvarFuncionario()">
             <mat-form-field appearance="outline">
                 <mat-label>Nome do Funcionário</mat-label>
                 <input type="text" matInput formControlName="nome"
@@ -33,9 +33,7 @@
                     <option value="TI">Tecnologia da Informação</option>
                 </select>
             </div>
-
-            <button mat-raised-button color="primary" type="button" class="btn ">Adicionar Foto</button>
-            <input type="file" id="file-input" #fileInput formControlName="foto" accept="image/*">
+            <input type="file" style="color: transparent" formControlName="foto" accept=".png, .svg, .jpg, .jpeg" (change)="carregarImagem($event)">
             <button class="btn mx-2 " mat-raised-button color="accent" type="submit" [disabled]="funcionario.invalid"
                 style="margin-top: 10px;">Salvar</button>
         </form>

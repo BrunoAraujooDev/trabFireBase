@@ -46,7 +46,7 @@ export class FuncionarioListaComponent implements OnInit {
   }
 
   editarFuncionario(fun: Funcionario){
-    
+    this.funcService.pegarDados(fun);
   }
 
 }
