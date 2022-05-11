@@ -27,10 +27,8 @@
                 <mat-label>Cargo do Funcionário</mat-label>
                 <select name="cargo" formControlName="cargo" class="form-control mb-3"
                     [class.valido-icon]="this.funcionario.get('cargo')?.valid"
-                    [class.invalido-icon]="this.funcionario.get('cargo')?.invalid && this.funcionario.get('cargo')?.touched">>
-                    <option value="ADM">Administração</option>
-                    <option value="RH">Recursos Humanos</option>
-                    <option value="TI">Tecnologia da Informação</option>
+                    [class.invalido-icon]="this.funcionario.get('cargo')?.invalid && this.funcionario.get('cargo')?.touched">
+                    <option *ngFor="let cargo of cargos" [value]="cargo.cargo"> {{ descricoes[cargo.cargo]  }} </option>
                 </select>
             </div>
             <input type="file" style="color: transparent" formControlName="foto" accept=".png, .svg, .jpg, .jpeg" (change)="carregarImagem($event)">

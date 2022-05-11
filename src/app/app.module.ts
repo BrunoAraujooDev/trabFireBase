@@ -23,6 +23,7 @@ import { registerLocaleData } from '@angular/common';
 import localePt from "@angular/common/locales/pt";
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { LoginComponent } from './components/login/login.component';
+import { ListarCargosComponent } from './components/cargos/listar-cargos/listar-cargos.component';
 
 registerLocaleData(localePt)
 
@@ -36,6 +37,7 @@ registerLocaleData(localePt)
     MainNavComponent,
     FuncionarioCardComponent,
     LoginComponent,
+    ListarCargosComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Cargo } from '../../cargos/cargo';
+import { CargoService } from '../../services/cargo.service';
 import { FuncionarioService } from '../../services/funcionario.service';
 import { Funcionario } from '../funcionario';
 
@@ -10,6 +12,13 @@ import { Funcionario } from '../funcionario';
 })
 export class FuncionarioFormComponent implements OnInit {
 
+  descricoes: any = {
+    ADM: "Administração",
+    RH: "Recursos Humanos",
+    TI: "Tecnologia da Informação"
+  }
+
+  cargos: Cargo[] = []
 
   funcionario: FormGroup = this.fb.group({
     nome: ['', [Validators.required, Validators.minLength(3)]],
@@ -22,9 +31,11 @@ export class FuncionarioFormComponent implements OnInit {
   id: string | undefined
   urlImagem: any = ""
 
+
   constructor(
     private fb: FormBuilder,
-    private service: FuncionarioService
+    private service: FuncionarioService,
+    private cargoService: CargoService
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +47,8 @@ export class FuncionarioFormComponent implements OnInit {
       
       this.funcionario.patchValue( item ) 
     })
+
+    this.buscarCargos()
   }
 
   
@@ -102,6 +115,18 @@ export class FuncionarioFormComponent implements OnInit {
       }))
       
     }
+  }
+
+  buscarCargos(){
+    this.cargoService.listarCargos().subscribe(doc => {
+      this.cargos = []
+      doc.forEach((element: any) => {
+        this.cargos.push({
+          id: element.payload.doc.id, 
+          ...element.payload.doc.data()
+        })
+      })
+    })
   }
 
 }
